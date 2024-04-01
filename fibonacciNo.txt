@@ -1,0 +1,16 @@
+delimiter //
+create procedure fibo()
+begin
+declare n int default 5;
+declare a int default 0;
+declare b int default 1;
+declare fib int;
+while n > 0 do
+select a as fibonacci;
+set fib = a + b;
+set a = b;
+set b = fib;
+set n = n - 1;
+end while;
+end //
+call fibo() //

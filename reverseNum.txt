@@ -1,0 +1,12 @@
+delimiter //
+create procedure rev()
+begin
+declare rev int default 0;
+declare n int default 5369;
+while n > 0 do
+set rev = rev * 10 + mod(n,10);
+set n = floor(n/10);
+end while;
+select rev;
+end //
+call rev() //

@@ -1,0 +1,17 @@
+delimiter //
+create procedure area()
+begin
+declare pi double default 3.14;
+declare ar double default 0.0;
+declare i int default 3;
+
+create table ar(radius int,area double);
+
+while i < 8 do
+set ar = pi * i * i;
+insert into ar values (i,ar);
+set i = i + 1;
+end while;
+select * from ar;
+end //
+call area() //
