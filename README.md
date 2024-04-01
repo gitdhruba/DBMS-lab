@@ -1,6 +1,5 @@
 # DBMS-lab
 
-```markdown
 # DBMS Lab PL/SQL Examples
 
 This document contains PL/SQL examples for MySQL.
