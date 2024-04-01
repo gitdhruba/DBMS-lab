@@ -1,0 +1,41 @@
+DELIMITER //
+
+CREATE PROCEDURE DebitFromAccount(IN account_no VARCHAR(24))
+
+BEGIN
+
+    DECLARE b_balance FLOAT;
+
+    
+
+    -- Check if the account exists and retrieve its balance
+
+    SELECT Balance INTO b_balance
+
+    FROM Accounts
+
+    WHERE Account_id = account_no;
+
+    
+
+    -- Debit Rs. 2000 if the account has a minimum balance of Rs. 500 after the debit
+
+    IF b_balance >= 2500 THEN
+
+        UPDATE Accounts
+
+        SET Balance = Balance - 2000
+
+        WHERE Account_id = account_no;
+
+        
+
+        SELECT 'Rs. 2000 debited successfully from account ' AS Message, balance from Accounts where Account_id = account_no;
+
+    ELSE
+
+        SELECT 'Insufficient balance to perform the transaction.' AS Message;
+
+    END IF;
+
+END //

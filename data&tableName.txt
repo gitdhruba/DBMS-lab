@@ -1,0 +1,5 @@
+For table creation and data insertion:
+
+create table Accounts(Account_id varchar(255), Name varchar(255),Balance float);
+
+insert into Accounts values ('AC 001','A',5000),('AC 002','B',10000),('AC 003','D',5000),('AC 004','E',2000),('AC 005','C',250);

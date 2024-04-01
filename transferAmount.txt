@@ -1,0 +1,91 @@
+DELIMITER //
+
+
+
+CREATE PROCEDURE TransferAmount(
+
+    IN p_sender_id VARCHAR(24),     
+
+    IN p_receiver_id VARCHAR(24),  
+    
+    IN p_receiver_name VARCHAR(5),
+
+    IN p_transfer_amount FLOAT     
+
+)
+
+BEGIN
+
+    DECLARE v_sender_balance FLOAT;     
+
+    DECLARE v_receiver_balance FLOAT;   
+
+    
+
+    -- Check if sender and receiver accounts exist and retrieve their balances
+
+    SELECT Balance INTO v_sender_balance
+
+    FROM Accounts
+
+    WHERE Account_id = p_sender_id;
+
+    
+
+    SELECT Balance INTO v_receiver_balance
+
+    FROM Accounts
+
+    WHERE Account_id = p_receiver_id and Name = p_receiver_name;
+
+    
+
+    -- Check if sender and receiver accounts exist and their balances are retrieved
+
+    IF v_sender_balance IS NOT NULL AND v_receiver_balance IS NOT NULL THEN
+
+        -- Transfer amount if sender has sufficient balance
+
+        IF v_sender_balance >= p_transfer_amount THEN
+
+          
+
+            UPDATE Accounts
+
+            SET Balance = Balance - p_transfer_amount
+
+            WHERE Account_id = p_sender_id;
+
+            
+
+            -- Credit to receiver
+
+            UPDATE Accounts
+
+            SET Balance = Balance + p_transfer_amount
+
+            WHERE Account_id = p_receiver_id;
+
+            
+
+            SELECT 'Transfer of Rs. ', p_transfer_amount, ' from account ', p_sender_id, ' to account ', p_receiver_id, ' successful.' AS Message;
+
+        ELSE
+
+            SIGNAL SQLSTATE '45000'
+
+            SET MESSAGE_TEXT = 'Insufficient balance in account ' ;
+
+        END IF;
+
+    ELSE
+
+        SIGNAL SQLSTATE '45000'
+
+        SET MESSAGE_TEXT = 'Invalid account number or name.';
+
+    END IF;
+
+
+
+END//
