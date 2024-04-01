@@ -6,7 +6,7 @@ This document contains PL/SQL examples for MySQL.
 
 ## Procedure to Calculate Factorial
 
-This procedure calculates the factorial of a given number.
+This section demonstrates a PL/SQL procedure to calculate the factorial of a given number.
 
 ```sql
 delimiter //
@@ -25,7 +25,7 @@ call fact //
 
 ## Procedure to Reverse a Number
 
-This procedure reverses a given number.
+This section illustrates a PL/SQL procedure to reverse a given number.
 
 ```sql
 delimiter //
@@ -44,7 +44,7 @@ call rev() //
 
 ## Procedure to Generate Fibonacci Series
 
-This procedure generates a Fibonacci series.
+This section showcases a PL/SQL procedure to generate a Fibonacci series.
 
 ```sql
 delimiter //
@@ -67,7 +67,7 @@ call fibo() //
 
 ## Procedure to Calculate Area of Circles
 
-This procedure calculates the area of circles with varying radii.
+This section presents a PL/SQL procedure to calculate the area of circles with varying radii.
 
 ```sql
 delimiter //
@@ -89,6 +89,9 @@ end //
 call area() //
 ```
 
+## Procedure for Debiting From Account
+
+This section describes a PL/SQL procedure for debiting a specific amount from an account, given its account number.
 
 ```sql
 DELIMITER //
@@ -133,6 +136,10 @@ BEGIN
 
 END //
 ```
+
+## Procedure for Transferring Amount Between Accounts
+
+This section explains a PL/SQL procedure for transferring a specified amount from one account to another.
 
 ```sql
 DELIMITER //
@@ -228,9 +235,11 @@ BEGIN
 END//
 ```
 
-```sql
-For table creation and data insertion:
+## Table Creation and Data Insertion
 
+This section provides SQL commands for creating a table and inserting data into it.
+
+```sql
 create table Accounts(Account_id varchar(255), Name varchar(255),Balance float);
 
 insert into Accounts values ('AC 001','A',5000),('AC 002','B',10000),('AC 003','D',5000),('AC 004','E',2000),('AC 005','C',250);
