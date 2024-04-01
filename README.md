@@ -89,9 +89,9 @@ begin
 end //
 call area() //
 ```
-```
 
-```
+
+```sql
 DELIMITER //
 
 CREATE PROCEDURE DebitFromAccount(IN account_no VARCHAR(24))
@@ -135,7 +135,7 @@ BEGIN
 END //
 ```
 
-```
+```sql
 DELIMITER //
 
 
@@ -229,7 +229,7 @@ BEGIN
 END//
 ```
 
-```
+```sql
 For table creation and data insertion:
 
 create table Accounts(Account_id varchar(255), Name varchar(255),Balance float);
