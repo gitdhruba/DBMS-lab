@@ -1,0 +1,12 @@
+delimiter //
+create procedure fact()
+begin
+declare n int default 7;
+declare res int default 1;
+while n > 0 do
+set res=res*n;
+set n=n-1;
+end while;
+select res;
+end //
+call fact //
