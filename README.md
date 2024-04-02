@@ -244,3 +244,54 @@ create table Accounts(Account_id varchar(255), Name varchar(255),Balance float);
 
 insert into Accounts values ('AC 001','A',5000),('AC 002','B',10000),('AC 003','D',5000),('AC 004','E',2000),('AC 005','C',250);
 ```
+
+# set1.jpeg
+![Alt text](set1.jpeg "Set1")
+
+## The image you sent contains a hospital information system design including details about patients, doctors, wards, and beds. It also outlines a patient registration form, doctor information, lab test information, and bed information.
+
+Here are some SQL queries you can write based on the information provided in the image:
+
+a) Display the details of patients admitted between 20-Jul-2002' and '20-Aug-2008'
+
+SQL
+```sql
+SELECT * FROM Patients-Indoor/outdoor
+WHERE date_of_registration BETWEEN '2002-07-20' AND '2008-08-20';
+```
+Use code with caution.
+b) Change the name of the patient to "Ram" whose patient id='PT011'"
+
+SQL
+```sql
+UPDATE Patients-Indoor/outdoor
+SET Patient_name = 'Ram'
+WHERE Registration_number = 'PT011';
+```
+Use code with caution.
+c) List the details of patients with age more than 50 taking treatment under a doctor, whose name like 'das'
+
+SQL
+```sql
+-- Assuming there's an 'Age' field in the Patients-Indoor/outdoor table
+SELECT * FROM Patients-Indoor/outdoor p
+INNER JOIN Doctors d ON p.refer_doctor_id = d.Doctor_code
+WHERE p.Age > 50 AND d.Doctor_name LIKE '%das%';
+```
+Use code with caution.
+d) List the name of male patients in ward no 13 taking treatment under doctor XYZ'
+
+SQL
+```sql
+SELECT Patient_name FROM Patients-Indoor/outdoor p
+INNER JOIN Doctors d ON p.refer_doctor_id = d.Doctor_code
+INNER JOIN Bed b ON p.Bed_number = b.bed_number
+WHERE b.ward_number = 13 AND b.status = 'Alloted' AND d.Doctor_name = 'XYZ' AND p.Gender = 'Male';
+```
+Use code with caution.
+Assumptions:
+
+The tables are named Patients-Indoor/outdoor, Doctors, Lab test Information, and Bed information as mentioned in the image.
+There is an 'Age' field in the Patients-Indoor/outdoor table.
+The doctor name can be searched by like operator.
+A bed can be allocated to one patient at a time (represented by the 'Alloted' status in the Bed table).
